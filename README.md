@@ -25,7 +25,7 @@ cellsnp-lite generates a vcf file including called genetic variants as follows:
 ### Demultiplex pooled samples 
 We use Vireo (Variational Inference for Reconstructing Ensemble Origin) for donor deconvolution using expressed SNPs in multiplexed scRNA-seq data [(LINK)](https://vireosnp.readthedocs.io/en/latest/).
 
-Vireo gets VCF for variants info file provided by cellsnp-lite as an input and 
+Vireo gets VCF for variants info file provided by cellsnp-lite as an input: 
 
 ```{r,eval=FALSE}
 vireo -c vcf-file -o output-folder --randSeed 2 -N Number-of-donors -t GP  
