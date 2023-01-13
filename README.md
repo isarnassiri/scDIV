@@ -12,11 +12,22 @@ cellsnp-lite is used to pileup the expressed alleles in single-cell data, which 
 
 cellsnp-lite gets bam file and list of barcodes as variable inputs, a Variant Call Format (vcf) file listing all candidate SNPs (regionsVCF) as backend input variable, and generates a vcf file including called genetic variants as follows:
 
+| ![Figure 1](/cellsnp-lite.png) | 
+|:--:| 
+| *Figure 1. How to download scQCEA from GitHub* |
+
 ```{r,eval=FALSE}
 cellsnp-lite -s possorted_genome_bam.bam -b barcodes.tsv.gz -O FOLDER-NAME -R regionsVCF -p 22 --minMAF 0.05 --minCOUNT 10 --gzip 
 ```
 
 ### Demultiplex pooled samples 
+We use Vireo (Variational Inference for Reconstructing Ensemble Origin) for donor deconvolution using expressed SNPs in multiplexed scRNA-seq data [(LINK)](https://vireosnp.readthedocs.io/en/latest/).
+
+vireo gets vcf file provided by cellsnp-lite as an input and 
+
+vireo -c '$VCF_scRNAseq$NAME'/ -o '$OUTPUT$NAME' --randSeed 2 -N '$NumberofDonors' -t GP  
+
+
 ### Generate gene-cell count matrices for all possible pairs of individuals
 
 
