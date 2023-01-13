@@ -27,8 +27,9 @@ We use Vireo (Variational Inference for Reconstructing Ensemble Origin) for dono
 
 vireo gets vcf file provided by cellsnp-lite as an input and 
 
-vireo -c '$VCF_scRNAseq$NAME'/ -o '$OUTPUT$NAME' --randSeed 2 -N '$NumberofDonors' -t GP  
-
+```{r,eval=FALSE}
+vireo -c vcf-file -o output-folder --randSeed 2 -N Number-of-donors -t GP  
+```
 
 ### Generate gene-cell count matrices for all possible pairs of individuals
 
