@@ -1,4 +1,3 @@
-
 #############################################################################################
 ############# Inter-individual Differential gene Correlation Analysis (IDCA) ################
 #############################################################################################
@@ -98,7 +97,6 @@ estimate = estimate[,which(colnames(estimate) %in% c(S1_BARCODE, S2_BARCODE))]
 #---------------------------------- inter-individual differential gene correlation analysis (IDCA) for two donors and two genes
 
 considered_GenePairs = vector()
-tryCatch({
 
 if(!TEST)
 {
@@ -363,9 +361,6 @@ if(length(AllGenes) > 0)
 }
 
 }
-  
-  
-}, error=function(e){})
 
 cat(paste0("\033[0;", 47, "m", "You can find the results in: ", "\033[0m","\n", InputDir, "/IDCA_Analysis/"))
 
