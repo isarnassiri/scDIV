@@ -1,0 +1,14 @@
+Package: scDIV
+Title: scDIV: Single Cell RNA Sequencing Data Demultiplexing using Interindividual Variations
+Version: 0.99.1
+Description: This documentation gives an introduction and usage manual of scDIV (acronym of the Single Cell RNA sequencing data Demultiplexing using Interindividual Variations) an R package to use inter-individual differential co-expression patterns for demultiplexing the pooled samples without any extra experimental steps.
+Depends: R (>= 4.1), data.table, dplyr, stringr, flexmix, tidyverse, SAVER, DGCA, grDevices, grid, mvtnorm, glmnet, ggplot2, SingleCellExperiment, scater, scDblFinder
+License: GPL-2
+Encoding: UTF-8
+LazyData: false
+RoxygenNote: 7.2.1
+biocViews: GeneExpression, Transcription, Sequencing, Microarray, SingleCell, Transcriptomics, Coverage,  QualityControl, ImmunoOncology, GeneSetEnrichment, WorkflowStep, GO
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+NeedsCompilation: no 
+Authors@R: c(person("Isar", "Nassiri", email="isar.nassiri@oncology.ox.ac.uk", role = c("aut","cre")))
