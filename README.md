@@ -107,7 +107,7 @@ IDCAvis( InputDir )
 You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s).
 
 
-### Step 7: Expression Aware Demultiplexing per Donor Pair
+### Step 8: Expression Aware Demultiplexing per Donor Pair
 The `EADDonorPair()` function uses inter-individual differential co-expression patterns for demultiplexing per donor pair.
 
 ```{r,eval=FALSE}
@@ -118,7 +118,7 @@ EADDonorPair( InputDir )
 
 You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt".
 
-### Step 8: Expression Aware Demultiplexing per sample pool
+### Step 9: Expression Aware Demultiplexing per sample pool
 The `EADDonorPair()` function uses inter-individual differential co-expression patterns for demultiplexing the pooled samples
 
 ```{r,eval=FALSE}
