@@ -59,7 +59,7 @@ cellranger mat2csv filtered_feature_bc_matrix.h5 read_count.csv
 ```
 
 ### Step 4: Single Cell data Quality Control
-In this step, we start to use a function from scDIV package. We use scQC() function to identify potential doublet cells based on the local density of simulated doublet expression profiles as follows:
+In this step, we start to use a function from scDIV package. We use `scQC()` function to identify potential doublet cells based on the local density of simulated doublet expression profiles as follows:
 
 ```{r,eval=FALSE}
 library("scDIV")
@@ -68,10 +68,25 @@ scQC( InputDir = csQCEAdir )
 ```
 You can find the results in the QC/ folder under the title of 'Cells_passed_QC_noDoublet.txt'.
 
-### Step 4: Single Cell data Quality Control
-In this step we use scQC() function to identify potential doublet cells based on the local density of simulated doublet expression profiles as follows:
+### Step 5: Gene Expression Recovery
+The `GeneExpressionRecovery()` function uses SAVER (single-cell analysis via expression recovery), an expression recovery method for unique molecule index (UMI)-based scRNA-seq data to provide accurate expression estimates for all genes in as scRNA-seq profile.
+
+```{r,eval=FALSE}
+library("scDIV")
+csQCEAdir <- system.file("extdata", package = "scDIV")
+Donors='donor6_donor2'
+FC='FAI5649A17'
+GeneExpressionRecovery( InputDir = csQCEAdir, Donors = Donors, FC = FC )
+```
+
+You can find the results in the SAVER/ folder with 'AssignedCells.txt' and 'AllCells.txt' extensions.
+
+### Step 6: Gene Expression Recovery
 
 
+### Citation
+
+Isar Nassiri, Benjamin Fairfax, Angela Lee, Yanxia Wu, David Buck, Paolo Piazza. scQCEA: A Framework for Annotation and Quality Control Report of Single-Cell RNA-Sequencing Data. 
 
 
 
