@@ -8,7 +8,7 @@
 #'@export
 #'@name GeneExpressionRecovery
 #'@title Gene Expression Recovery
-#'@description This function uses SAVER (single-cell analysis via expression recovery), an expression recovery method for unique molecule index (UMI)-based scRNA-seq data to provide accurate expression estimates for all genes in as scRNA-seq profile.
+#'@description This function uses SAVER (single-cell analysis via expression recovery), an expression recovery method for unique molecule index (UMI)-based scRNA-seq data to provide accurate expression estimates for all genes in a scRNA-seq profile.
 #'@author {Isar Nassiri}
 #'@param InputDir
 #'#'A folder including gene-cell count matrix (read_count.csv), filtered feature-barcode matrices from 10X CellRanger count (barcodes.tsv.gz), list of QC passed barcodes (Cells_passed_QC_noDoublet.txt) in QC/ folder, and output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv).
