@@ -9,7 +9,7 @@ This documentation gives an introduction and usage manual of scDIV (acronym of t
 
 ### Installation
 1. Install the R [(LINK)](https://cran.r-project.org/)
-3. Run the following command in R/rStudio to install scDIV as an R package:
+2. Run the following command in R/rStudio to install scDIV as an R package:
 
 ```{r,eval=FALSE}
 if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
@@ -17,6 +17,8 @@ if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
 library(devtools)
 install_github("isarnassiri/scDIV")
 ```
+
+You can find sample input files in `system.file("extdata", package = "scDIV")` folder.
 
 ### Step 1: Infer genetic variants from scRNA-seq data 
 cellsnp-lite is used to pileup the expressed alleles in single-cell data, which can be directly used for donor deconvolution in multiplexed single-cell RNA-seq data, which assigns cells to donors without genotyping reference [(LINK)](https://github.com/single-cell-genetics/cellsnp-lite). 
