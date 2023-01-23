@@ -9,7 +9,7 @@
 #'@export 
 #'@name EADDonorPair
 #'@title Expression Aware Demultiplexing per Donor Pair
-#'@description .
+#'@description This function uses inter-individual differential co-expression patterns for demultiplexing per donor pair.
 #'@author {Isar Nassiri}
 #'@param InputDir
 #'#'A folder including matrix of cell-gene expression after Gene Expression Recovery in the SAVER/ folder with 'AllCells.txt' extensions, output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv), and output of IDCAvis function with extension of "merged.txt" in "IDCA_Analysis/IDCA_Plots/" folder.
