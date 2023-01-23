@@ -81,8 +81,30 @@ GeneExpressionRecovery( InputDir = csQCEAdir, Donors = Donors, FC = FC )
 
 You can find the results in the SAVER/ folder with 'AssignedCells.txt' and 'AllCells.txt' extensions.
 
-### Step 6: Gene Expression Recovery
+### Step 6: Inter-individual Differential gene Correlation Analysis (IDCA)
+The `IDCA()` functions uses correlation coefficients and performed Inter-individual Differential gene Correlation Analysis (IDCA) for two donors (D1 and D2) and genes (G1 and G2).
 
+```{r,eval=FALSE}
+library("scDIV")
+ERP = "donor6_donor2_FAI5649A17_AssignedCells.txt"
+Donors='donor6_donor2'
+FC='FAI5649A17'
+InputDir = system.file("extdata", package = "scDIV")
+IDCA( InputDir, Donors, FC, ERP, TEST = T )
+```
+
+You can find the results in the IDCA_Analysis/ folder.
+
+### Step 7: Visualization of IDCA outputs
+The `IDCAvis()` function visualizes the outputs of IDC analysis.
+
+```{r,eval=FALSE}
+library("scDIV")
+InputDir = system.file("extdata", package = "scDIV")
+IDCAvis( InputDir )
+```
+
+You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s).
 
 ### Citation
 
