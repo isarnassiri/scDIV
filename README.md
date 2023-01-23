@@ -106,6 +106,29 @@ IDCAvis( InputDir )
 
 You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s).
 
+
+### Step 7: Expression Aware Demultiplexing per Donor Pair
+The `EADDonorPair()` function uses inter-individual differential co-expression patterns for demultiplexing per donor pair.
+
+```{r,eval=FALSE}
+library("scDIV")
+InputDir = system.file("extdata", package = "scDIV")
+EADDonorPair( InputDir )
+```
+
+You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt".
+
+### Step 8: Expression Aware Demultiplexing per sample pool
+The `EADDonorPair()` function uses inter-individual differential co-expression patterns for demultiplexing the pooled samples
+
+```{r,eval=FALSE}
+library("scDIV")
+InputDir = system.file("extdata", package = "scDIV")
+EADDonorPair( InputDir )
+```
+
+You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Results_Expression_Aware_Cell_Assignment.txt" and "Summary.txt".
+
 ### Citation
 
 Isar Nassiri, Benjamin Fairfax, Angela Lee, Yanxia Wu, David Buck, Paolo Piazza. scQCEA: A Framework for Annotation and Quality Control Report of Single-Cell RNA-Sequencing Data. 
