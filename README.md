@@ -7,6 +7,17 @@ scDIV: Single Cell RNA Sequencing Data Demultiplexing using Interindividual Vari
 This documentation gives an introduction and usage manual of scDIV (acronym of the Single Cell RNA sequencing data Demultiplexing using Interindividual Variations) an R package to use inter-individual differential co-expression patterns for demultiplexing the pooled samples without any extra experimental steps. 
 <br />
 
+### Installation
+1. Install the R [(LINK)](https://cran.r-project.org/)
+3. Run the following command in R/rStudio to install scDIV as an R package:
+
+```{r,eval=FALSE}
+if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
+    
+library(devtools)
+install_github("isarnassiri/scDIV")
+```
+
 ### Step 1: Infer genetic variants from scRNA-seq data 
 cellsnp-lite is used to pileup the expressed alleles in single-cell data, which can be directly used for donor deconvolution in multiplexed single-cell RNA-seq data, which assigns cells to donors without genotyping reference [(LINK)](https://github.com/single-cell-genetics/cellsnp-lite). 
 
@@ -48,17 +59,17 @@ cellranger mat2csv filtered_feature_bc_matrix.h5 read_count.csv
 ```
 
 ### Step 4: Single Cell data Quality Control
-In this step we use scQC() function to identify potential doublet cells based on the local density of simulated doublet expression profiles as follows:
-
-First install the scDIV package:
-
+In this step, we start to use a function from scDIV package. We use scQC() function to identify potential doublet cells based on the local density of simulated doublet expression profiles as follows:
 
 ```{r,eval=FALSE}
 library("scDIV")
 csQCEAdir <- system.file("extdata", package = "scDIV")
 scQC( InputDir = csQCEAdir ) 
 ```
+You can find the results in the QC/ folder under the title of 'Cells_passed_QC_noDoublet.txt'.
 
+### Step 4: Single Cell data Quality Control
+In this step we use scQC() function to identify potential doublet cells based on the local density of simulated doublet expression profiles as follows:
 
 
 
