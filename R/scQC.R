@@ -40,24 +40,24 @@ setwd(InputDir)
 dir.create('QC/')
 
 #---------------------------------- read in gene expression profile
-eislet = fread('read_count.csv', stringsAsFactors = F,header = T)
-eislet = as.data.frame(eislet)
-row.names(eislet) = eislet$V1
-eislet = eislet[,-1]
+eislet <- fread('read_count.csv', stringsAsFactors = FALSE,header = TRUE)
+eislet <- as.data.frame(eislet)
+row.names(eislet) <- eislet$V1
+eislet <- eislet[,-1]
 #----------------------------------
 
 #---------------------------------- keep expressed genes
-eislet = eislet[apply(eislet, 1, function(x) !all(x==0)),]
-counts.fname = as.matrix(eislet)
+eislet <- eislet[apply(eislet, 1, function(x) !all(x==0)),]
+counts.fname <- as.matrix(eislet)
 #----------------------------------
 
 #---------------------------------- add gene symbols
-genesID_names = fread(paste0('features.tsv.gz'), stringsAsFactors = F, header = F)
-genesID_names = as.data.frame(genesID_names)
-colnames(genesID_names) = c('Ensembl','Symbol','Annotation')
+genesID_names <- fread(paste0('features.tsv.gz'), stringsAsFactors = FALSE, header = FALSE)
+genesID_names <- as.data.frame(genesID_names)
+colnames(genesID_names) <- c('Ensembl','Symbol','Annotation')
 
-temp = data.frame(Ensembl = row.names(counts.fname))
-genesID_names = left_join(temp, genesID_names, by='Ensembl')
+temp <- data.frame(Ensembl = row.names(counts.fname))
+genesID_names <- left_join(temp, genesID_names, by='Ensembl')
 #----------------------------------
 
 #---------------------------------- convert matrix to SingleCellExperiment object
@@ -67,8 +67,8 @@ rowData=rownames(counts.fname),
 colData=DataFrame(Barcode=colnames(counts.fname))
 )
 
-rowData(sce)$Ensembl = genesID_names$Ensembl
-rowData(sce)$Symbol = genesID_names$Symbol
+rowData(sce)$Ensembl <- genesID_names$Ensembl
+rowData(sce)$Symbol <- genesID_names$Symbol
 
 rownames(sce) <- uniquifyFeatureNames(rowData(sce)$Ensembl, rowData(sce)$Symbol)
 colnames(sce) <- sce$Barcode
@@ -79,11 +79,11 @@ set.seed(100)
 
 dbl.dens <- computeDoubletDensity(sce) 
 sce$DoubletScore <- dbl.dens
-sce = sce[,dbl.dens < 2]
+sce <- sce[,dbl.dens < 2]
 #----------------------------------
 
 #---------------------------------- Save results
-write.table(colnames((assay(sce))), 'QC/Cells_passed_QC_noDoublet.txt', quote = F, row.names = F, col.names = F)
+write.table(colnames((assay(sce))), 'QC/Cells_passed_QC_noDoublet.txt', quote = FALSE, row.names = FALSE, col.names = FALSE)
 #----------------------------------
 
 cat(paste0("\033[0;", 47, "m", "You can find the results in: ", "\033[0m","\n", InputDir, "/QC/Cells_passed_QC_noDoublet.txt"))

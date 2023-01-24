@@ -10,10 +10,10 @@ EADDonorPool(InputDir)
 \item{InputDir}{#'A folder including matrix of cell-gene expression after Gene Expression Recovery in the SAVER/ folder with 'AllCells.txt' extensions, output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv), and output of IDCAvis function with extension of "merged.txt" in "IDCA_Analysis/IDCA_Plots/" folder.}
 }
 \value{
-You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt".
+You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Results_Expression_Aware_Cell_Assignment.txt" and "Summary.txt".
 }
 \description{
-.
+This function uses inter-individual differential co-expression patterns for demultiplexing the pooled samples.
 }
 \examples{
 library("scDIV")

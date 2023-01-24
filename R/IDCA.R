@@ -159,9 +159,7 @@ if(length(AllGenes) > 0)
     input_mixture_model <- t(rbind(as.matrix(estimate_Gene1), as.matrix(estimate_Gene2)))
     input_mixture_model <- as.data.frame(input_mixture_model, stringsAsFactors = FALSE)
     
-    mixed_model <- flexmix(cbind(as.numeric(input_mixture_model[,1]),as.numeric(input_mixture_model[,2]))~1, 
-    k=2, data=input_mixture_model,
-    model = FLXMCmvnorm(diag = TRUE), #diag = TRUE to get fix results FLXMCmvpois(), FLXMCmvnorm
+    mixed_model <- flexmix(cbind(as.numeric(input_mixture_model[,1]),as.numeric(input_mixture_model[,2]))~1, k=2, data=input_mixture_model, model = FLXMCmvnorm(diag = TRUE), #diag = TRUE to get fix results FLXMCmvpois(), FLXMCmvnorm
     control <- list(tolerance = 1e-15, iter.max = 1000))
     
     if(length(unique(clusters(mixed_model)))==2)

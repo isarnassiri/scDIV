@@ -4,3 +4,9 @@ All Cells in FAI5649A17:9381
 % of unassigned cell: 3.2
 ----------
 
+All Cells in FAI5649A17:9381
+----- Mixed -----
+% of assigned cell: 96.8
+% of unassigned cell: 3.2
+----------
+

@@ -15,13 +15,13 @@ GeneExpressionRecovery(InputDir, Donors, FC)
 #'@return You can find the results in the SAVER/ folder with 'AssignedCells.txt' and 'AllCells.txt' extensions.}
 }
 \description{
-This function uses SAVER (single-cell analysis via expression recovery), an expression recovery method for unique molecule index (UMI)-based scRNA-seq data to provide accurate expression estimates for all genes in as scRNA-seq profile.
+This function uses SAVER (single-cell analysis via expression recovery), an expression recovery method for unique molecule index (UMI)-based scRNA-seq data to provide accurate expression estimates for all genes in a scRNA-seq profile.
 }
 \examples{
 library("scDIV")
 csQCEAdir <- system.file("extdata", package = "scDIV")
-Donors='donor6_donor2'
-FC='FAI5649A17'
+Donors<-'donor6_donor2'
+FC<-'FAI5649A17'
 GeneExpressionRecovery( InputDir = csQCEAdir, Donors = Donors, FC = FC )
 }
 \author{

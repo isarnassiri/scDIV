@@ -13,7 +13,7 @@ EADDonorPair(InputDir)
 You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt".
 }
 \description{
-.
+This function uses inter-individual differential co-expression patterns for demultiplexing per donor pair.
 }
 \examples{
 library("scDIV")

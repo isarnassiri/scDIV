@@ -1,0 +1,6 @@
+All Cells in FAI5649A18:12298
+----- Mixed -----
+% of assigned cell: 96.5
+% of unassigned cell: 3.5
+----------
+
