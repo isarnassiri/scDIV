@@ -16,7 +16,7 @@ library(devtools)
 install_github("isarnassiri/scDIV")
 ```
 
-All dependency packages automatically will be downloaded, installed and loaded from CRAN-like repositories. We only tested scQCEA in the R version 4.1.3 (2022-03-10) environment. You need to have root permission for this distribution, including the installation of any package.
+All dependency packages automatically will be downloaded, installed and loaded from CRAN-like repositories. We only tested scDIV in the R version 4.1.3 (2022-03-10) environment. You need to have root permission for this distribution, including the installation of any package.
 
 You can find sample input files in `system.file("extdata", package = "scDIV")` folder.
 
@@ -138,7 +138,7 @@ Isar Nassiri, Benjamin Fairfax, Andrew J Kwok, Aneesha Bhandari, Katherine Bull,
 A completed version for all planned features.
 
 ### Quick Resources
-Latest version on GitHub [(LINK)](https://github.com/isarnassiri/scQCEA/)
+Latest version on GitHub [(LINK)](https://github.com/isarnassiri/scDIV/)
 
 ### Issue Reports
 If you find any error or suspicious bug, we will appreciate your report. Please write them in the GitHub issues [(LINK)](https://github.com/isarnassiri/scQCEA/issues)
