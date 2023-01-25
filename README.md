@@ -3,7 +3,7 @@
 ### Introduction 
 This documentation gives an introduction and user manual of scDIV (acronym of the Single Cell RNA sequencing data Demultiplexing using Interindividual Variations) an R package to use inter-individual differential co-expression patterns for demultiplexing the pooled samples without any extra experimental steps. 
 
-Please see the [`manual`](https://isarnassiri.github.io/scDIV/) for usage of scDIV, including 9 steps and installation.
+Please see the [`manual`](https://isarnassiri.github.io/scDIV/) for usage of scDIV, including 9 steps.
 <br />
 
 ### Installation
