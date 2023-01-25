@@ -6,7 +6,8 @@ This documentation gives an introduction and user manual of scDIV (acronym of th
 
 ### Easy Installation
 1. Install the R [(LINK)](https://cran.r-project.org/)
-2. Run the following command in R/rStudio to install scDIV as an R package:
+2. Install the free version of rStudio [(LINK)](https://www.rstudio.com/products/rstudio/download/) [optional step]
+3. Run the following command in R/rStudio to install scDIV as an R package:
 
 ```{r,eval=FALSE}
 if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
