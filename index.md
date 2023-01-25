@@ -7,7 +7,7 @@ scDIV: Single Cell RNA Sequencing Data Demultiplexing using Interindividual Vari
 This documentation gives an introduction and user manual of scDIV (acronym of the Single Cell RNA sequencing data Demultiplexing using Interindividual Variations) an R package to use inter-individual differential co-expression patterns for demultiplexing the pooled samples without any extra experimental steps. 
 <br />
 
-### Installation
+### Easy Installation
 1. Install the R [(LINK)](https://cran.r-project.org/)
 2. Run the following command in R/rStudio to install scDIV as an R package:
 
@@ -17,6 +17,8 @@ if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
 library(devtools)
 install_github("isarnassiri/scDIV")
 ```
+
+All dependency packages automatically will be downloaded, installed and loaded from CRAN-like repositories. We only tested scQCEA in the R version 4.1.3 (2022-03-10) environment. You need to have root permission for this distribution, including the installation of any package.
 
 You can find sample input files in `system.file("extdata", package = "scDIV")` folder.
 
