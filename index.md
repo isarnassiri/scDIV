@@ -134,7 +134,7 @@ You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ 
 Isar Nassiri, Benjamin Fairfax, Andrew J Kwok, Aneesha Bhandari, Katherine Bull, Angela Lee, Yanxia Wu, Julian Knight, David Buck, Paolo Piazza. Demultiplexing of Single Cell RNA Sequencing Data using Interindividual Variation in Gene Expression. 
 
 ### History
-**Release v0.1.1 (04/07/2022)**
+**Release v0.1.1 (25/01/2023)**
 A completed version for all planned features.
 
 ### Quick Resources
