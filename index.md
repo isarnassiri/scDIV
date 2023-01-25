@@ -1,4 +1,4 @@
-## **scQCEA**
+## **Test**
 
 ### Introduction 
 This documentation gives an introduction and usage manual of scQCEA (acronym of the single-cell RNA sequencing Quality Control and Enrichment Analysis) an R package for annotation and quality control report of scRNA-Seq profiles. It generates an interactive report of quality control metrics which allows visual evaluation of QC metrics, objective selection of insightful optimal cluster numbers and discrimination between true variation and background noise.
