@@ -1,5 +1,5 @@
 title: scDIV
 description: Single Cell RNA Sequencing Data Demultiplexing using Interindividual Variations
-show_downloads: true
+show_downloads: false
 google_analytics:
 theme: jekyll-theme-cayman
