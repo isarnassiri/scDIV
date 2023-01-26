@@ -144,5 +144,5 @@ A completed version for all planned features.
 Latest version on GitHub [(LINK)](https://github.com/isarnassiri/scDIV/)
 
 ### Issue Reports
-If you find any error or suspicious bug, we will appreciate your report. Please write them in the GitHub issues [(LINK)](https://github.com/isarnassiri/scQCEA/issues)
+If you find any error or suspicious bug, we will appreciate your report. Please write them in the GitHub issues [(LINK)](https://github.com/isarnassiri/scDIV/issues)
 
