@@ -107,7 +107,7 @@ IDCAvis( InputDir )
 
 You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s) (Figure 3).
 
-| ![Figure 3](/RPL31_RPS27-donor6_donor2_FAI5649A17_RealCluster_correlationplot.png) | 
+| ![Figure 3](/IDCAvis.png) | 
 |:--:| 
 | *Figure 3. Example of output from IDCAvis function.* |
 
