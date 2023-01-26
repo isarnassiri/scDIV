@@ -29,7 +29,7 @@ cellsnp-lite gets bam file and list of barcodes as variable inputs, a Variant Ca
 cellsnp-lite -s possorted_genome_bam.bam -b barcodes.tsv.gz -O FOLDER-NAME -R regionsVCF -p 22 --minMAF 0.05 --minCOUNT 10 --gzip 
 ```
 
-cellsnp-lite generates a vcf file including called genetic variants as follows:
+cellsnp-lite generates a vcf file including called genetic variants as follows (Figure 1):
 
 | ![Figure 1](/cellsnp-lite.png) | 
 |:--:| 
@@ -44,7 +44,7 @@ Vireo gets variants info file provided by cellsnp-lite as an input:
 vireo -c input-vcf-file -o output-folder --randSeed 2 -N Number-of-donors -t GP  
 ```
 
-We use "donor_ids.tsv" file from outputs of Vireo for downstream analysis:
+We use "donor_ids.tsv" file from outputs of Vireo for downstream analysis (Figure 2).
 
 | ![Figure 2](/vireo.png) | 
 |:--:| 
@@ -105,8 +105,11 @@ InputDir = system.file("extdata", package = "scDIV")
 IDCAvis( InputDir )
 ```
 
-You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s).
+You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s) (Figure 3).
 
+| ![Figure 3](/IDCAvis.png) | 
+|:--:| 
+| *Figure 3. Example of output from IDCAvis function.* |
 
 ### Step 8: Expression Aware Demultiplexing per Donor Pair
 The `EADDonorPair()` function uses inter-individual differential co-expression patterns for demultiplexing per donor pair.
