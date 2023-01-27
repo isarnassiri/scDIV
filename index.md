@@ -138,7 +138,7 @@ You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ 
 
 | ![Figure 7](/EADDonorPair.png) | 
 |:--:| 
-| *Figure 7. Example of output from `EADDonorPair()` function. For an indicated pair of the donors (columns Donor1 and Donor2), EADDonorPair() uses a top differentially correlated gene pair (e.g., XIST and RPS27) and gaussian mixture model clustering, trained by the results of genetics demultiplexing, to assign each cell (BARCODE column) to a donor (predicted_clusters column). In addition, we include the results of genetic demultiplexing (donor_id, prob_max, prob_doublet, n_vars, best_singlet, best_doublet) and flow cell ID (FC).* |
+| *Figure 7. Example of output from `EADDonorPair()` function. For an indicated pair of the donors (columns Donor1 and Donor2), `EADDonorPair()` uses a top differentially correlated gene pair (e.g., XIST and RPS27) and gaussian mixture model clustering, trained by the results of genetics demultiplexing, to assign each cell (BARCODE column) to a donor (predicted_clusters column). In addition, we append the results of genetic demultiplexing (donor_id, prob_max, prob_doublet, n_vars, best_singlet, best_doublet) and flow cell ID (FC).* |
 
 ### Step 9: Expression Aware Demultiplexing per sample pool
 The `EADPoolSmaple()` function uses inter-individual differential co-expression patterns for demultiplexing the pooled samples
