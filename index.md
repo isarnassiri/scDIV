@@ -124,9 +124,9 @@ IDCAvis( InputDir )
 
 You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s) (Figure 3).
 
-| ![Figure 3](/IDCAvis.png) | 
+| ![Figure 6](/IDCAvis.png) | 
 |:--:| 
-| *Figure 3. Example of output from IDCAvis function.* |
+| *Figure 6. Example of output from IDCAvis function.* |
 
 ### Step 8: Expression Aware Demultiplexing per Donor Pair
 The `EADDonorPair()` function uses inter-individual differential co-expression patterns for demultiplexing per donor pair.
