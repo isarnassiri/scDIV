@@ -111,7 +111,7 @@ for(i in 1:length(FCs))
     #----------------------------------
   }
   
-  RESULT = RESULT[,which(colnames(RESULT) %in% c('BARCODE', 'predicted_clusters', 'FC', 'NumDonorPairs', 'NumAssignedtoDonor', 'EA_Assignment')]
+  RESULT = RESULT[,which(colnames(RESULT) %in% c('BARCODE', 'predicted_clusters', 'FC', 'NumDonorPairs', 'NumAssignedtoDonor', 'EA_Assignment'))]
   
   #---------------------------------- print outputs for all donors
   print('----------')
