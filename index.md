@@ -141,7 +141,7 @@ You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ 
 | *Figure 7. Example of output from `EADDonorPair()` function. For an indicated pair of the donors (columns Donor1 and Donor2), `EADDonorPair()` uses a top differentially correlated gene pair (e.g., XIST and RPS27) and gaussian mixture model clustering to assign each cell (BARCODE column) to a donor (predicted_clusters column). In addition, we append the results of genetic demultiplexing (donor_id, prob_max, prob_doublet, n_vars, best_singlet, best_doublet) and flow cell ID (FC).* |
 
 ### Step 9: Expression Aware Demultiplexing per sample pool
-The `EADPoolSmaple()` function uses inter-individual differential co-expression patterns for demultiplexing the pooled samples
+The `EADPoolSmaple()` function uses inter-individual differential co-expression patterns for demultiplexing the pooled samples:
 
 ```{r,eval=FALSE}
 library("scDIV")
@@ -149,14 +149,13 @@ InputDir = system.file("extdata", package = "scDIV")
 EADPoolSmaple( InputDir )
 ```
 
-You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Results_Expression_Aware_Cell_Assignment.txt" and "Summary.txt" (Figure 8).
+You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Results_Expression_Aware_Cell_Assignment.txt" and "Summary.txt".
+
+For instance as you can see in figure 8, for an indicated cell (BARCODE column) (e.g., AAACCTGGTTTGACTG-1), we consider all possibilities, and most of the time the cell is assigned to the donor 7 (predicted_clusters column). We confirm that the cell belongs to donor-7 (EA_Assignment column) if we successfully assign it to donor-7 (NumAssignedtoDonor column) for an equal or greater number of all pairs of donors (NumDonorPairs column) minus 1.
 
 | ![Figure 8](/EADPoolSmaple.png) | 
 |:--:| 
-| *Figure 8. Example of output from `EADDonorPair()` function. For an indicated pair of the donors (columns Donor1 and Donor2), `EADDonorPair()` uses a top differentially correlated gene pair (e.g., XIST and RPS27) and gaussian mixture model clustering to assign each cell (BARCODE column) to a donor (predicted_clusters column). In addition, we append the results of genetic demultiplexing (donor_id, prob_max, prob_doublet, n_vars, best_singlet, best_doublet) and flow cell ID (FC).* |
- 
-
-
+| *Figure 8. Example of output from `EADPoolSmaple()` function. Please see text for more details.* |
 
 ### Citation
 Isar Nassiri, Benjamin Fairfax, Andrew J Kwok, Aneesha Bhandari, Katherine Bull, Angela Lee, Yanxia Wu, Julian Knight, David Buck, Paolo Piazza. Demultiplexing of Single Cell RNA Sequencing Data using Interindividual Variation in Gene Expression. 
