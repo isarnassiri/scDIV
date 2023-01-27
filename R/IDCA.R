@@ -32,7 +32,7 @@
 #'Donors='donor6_donor2'
 #'FC='FAI5649A17'
 #'InputDir = system.file("extdata", package = "scDIV")
-#'IDCA( InputDir, Donors, FC, ERP, TEST = T )
+#'IDCA( InputDir, Donors, FC, ERP, TEST = TRUE )
 #'@export
 
 #----------------------------------
