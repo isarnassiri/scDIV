@@ -119,7 +119,7 @@ InputDir = system.file("extdata", package = "scDIV")
 IDCAvis( InputDir )
 ```
 
-You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s) (Figure 3).
+You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s) (Figure 6).
 
 | ![Figure 6](/IDCAvis.png) | 
 |:--:| 
@@ -134,7 +134,7 @@ InputDir = system.file("extdata", package = "scDIV")
 EADDonorPair( InputDir )
 ```
 
-You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt".
+You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt" (Figure 7).
 
 | ![Figure 7](/EADDonorPair.png) | 
 |:--:| 
