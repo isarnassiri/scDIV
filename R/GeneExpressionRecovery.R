@@ -36,90 +36,142 @@
 #----------------------------------
 
 GeneExpressionRecovery <- NULL
-GeneExpressionRecovery <- function( InputDir, Donors, FC )
+GeneExpressionRecovery <- function(InputDir, Donors, FC)
 {
-
-#---------------------------------- Gene expression recovery for single-cell RNA sequencing
-setwd(InputDir)
-OutPutPath <- 'SAVER'
-dir.create(OutPutPath, recursive = TRUE)
-#---------------------------------- read in gene expression profile
-read_count <- fread('read_count.csv', stringsAsFactors = FALSE, header = TRUE)
-read_count <- as.data.frame(read_count)
-colnames(read_count)[1] <- 'GeneID'
-
-#---------------------------------- add gene symbols
-GTF <- fread('features.tsv.gz', stringsAsFactors = FALSE, header = FALSE)
-GTF <- as.data.frame(GTF)
-colnames(GTF) <- c('GeneID','gene_name','Annotation')
-
-estimate <- merge(GTF,read_count,by='GeneID')
-row.names(estimate) <- make.names(estimate$gene_name, unique = TRUE)
-estimate <- estimate[,-c(1:3)]
-
-#---------------------------------- keep expressed genes
-estimate <- estimate[apply(estimate, 1, function(x) !all(x==0)),]
-#----------------------------------
-
-#---------------------------------- subsed gene expression profile using the list of QC passed cells
-Cells_passed_QC <- fread('QC/Cells_passed_QC_noDoublet.txt', stringsAsFactors = FALSE, header = FALSE)
-Cells_passed_QC <- as.data.frame(Cells_passed_QC)
-colnames(Cells_passed_QC)[1] <- 'BARCODE'
-estimate <- estimate[,which(colnames(estimate) %in% Cells_passed_QC$BARCODE)]
-#----------------------------------
-
-#---------------------------------- read in the results of genetic based demultiplexing (vireo)
-vireo <- fread('donor_ids.tsv', stringsAsFactors = FALSE, header = TRUE)
-vireo <- as.data.frame(vireo)
-colnames(vireo)[1] <- 'BARCODE'
-#----------------------------------
-
-#---------------------------------- list of donors
-sp <- str_split_fixed(Donors, "_", 2)
-
-D1<-sp[1,1]
-D2<-sp[1,2]
-
-#----------------------------------
-
-#---------------------------------- gene expression profile of assigned cells by genetic demultiplexing per pair of donors
-S1 <- vireo[which(vireo$donor_id == D1),]
-S2 <- vireo[which(vireo$donor_id == D2),]
-
-read_count_S1S2 <- estimate[,which(colnames(estimate) %in% c(S1$BARCODE,S2$BARCODE))]
-read_count_S1S2 <- read_count_S1S2[rowSums(read_count_S1S2[])>as.numeric(summary(rowSums(read_count_S1S2[]))[4]),] # > Median [3], mean [4]
-#----------------------------------
-
-#---------------------------------- run SAVER (Single-cell Analysis Via Expression Recovery)
-set.seed(123)
-estimate_S1S2 <- saver(read_count_S1S2, ncores = 6, estimates.only = TRUE)
-estimate_S1S2 <- data.frame(GeneID=row.names(estimate_S1S2), estimate_S1S2)
-#----------------------------------
-
-#---------------------------------- save the transformed gene expression profile
-fwrite(estimate_S1S2, paste0(OutPutPath, '/', D1, '_', D2, '_', FC, '_', 'AssignedCells.txt'), row.names = FALSE, quote = FALSE, sep = '\t')
-#----------------------------------
-
-#---------------------------------- gene expression profile of all cells per pair of donors
-vireo_subset <- vireo[which(vireo$donor_id %in% c('doublet', 'unassigned')),]
-S3 <- vireo_subset[which(vireo_subset$best_singlet %in% c(D1, D2)),] # sometime best_singlet does not exist in best_doublet
-read_count_S3 <- estimate[,which(colnames(estimate) %in% S3$BARCODE)]
-
-read_count_S3 <- read_count_S3[which(row.names(read_count_S3) %in% row.names(read_count_S1S2)),]
-# identical(row.names(read_count_S3), row.names(read_count_S1S2))
-
-read_count_S1S2S3 <- cbind(read_count_S1S2, read_count_S3)
-#----------------------------------
-
-#---------------------------------- run SAVER (Single-cell Analysis Via Expression Recovery)
-estimate_S1S2S3 <- saver(read_count_S1S2S3, ncores = 6, estimates.only = TRUE)
-estimate_S1S2S3 <- data.frame(GeneID=row.names(estimate_S1S2S3), estimate_S1S2S3)
-
-#---------------------------------- save the transformed gene expression profile
-fwrite(estimate_S1S2S3, paste0(OutPutPath, '/', D1, '_', D2, '_', FC, '_', 'AllCells.txt'), row.names = FALSE, quote = FALSE, sep = '\t')
-#----------------------------------
-
-cat(paste0("\033[0;", 47, "m", "You can find the results in: ", "\033[0m","\n", csQCEAdir, "/SAVER/"))
-
+  #---------------------------------- Gene expression recovery for single-cell RNA sequencing
+  setwd(InputDir)
+  OutPutPath <- 'SAVER'
+  dir.create(OutPutPath, recursive = TRUE)
+  #---------------------------------- read in gene expression profile
+  read_count <-
+    fread('read_count.csv',
+          stringsAsFactors = FALSE,
+          header = TRUE)
+  read_count <- as.data.frame(read_count)
+  colnames(read_count)[1] <- 'GeneID'
+  
+  #---------------------------------- add gene symbols
+  GTF <-
+    fread('features.tsv.gz',
+          stringsAsFactors = FALSE,
+          header = FALSE)
+  GTF <- as.data.frame(GTF)
+  colnames(GTF) <- c('GeneID', 'gene_name', 'Annotation')
+  
+  estimate <- merge(GTF, read_count, by = 'GeneID')
+  row.names(estimate) <-
+    make.names(estimate$gene_name, unique = TRUE)
+  estimate <- estimate[, -c(1:3)]
+  
+  #---------------------------------- keep expressed genes
+  estimate <- estimate[apply(estimate, 1, function(x)
+    ! all(x == 0)), ]
+  #----------------------------------
+  
+  #---------------------------------- subsed gene expression profile using the list of QC passed cells
+  Cells_passed_QC <-
+    fread(
+      'QC/Cells_passed_QC_noDoublet.txt',
+      stringsAsFactors = FALSE,
+      header = FALSE
+    )
+  Cells_passed_QC <- as.data.frame(Cells_passed_QC)
+  colnames(Cells_passed_QC)[1] <- 'BARCODE'
+  estimate <-
+    estimate[, which(colnames(estimate) %in% Cells_passed_QC$BARCODE)]
+  #----------------------------------
+  
+  #---------------------------------- read in the results of genetic based demultiplexing (vireo)
+  vireo <-
+    fread('donor_ids.tsv',
+          stringsAsFactors = FALSE,
+          header = TRUE)
+  vireo <- as.data.frame(vireo)
+  colnames(vireo)[1] <- 'BARCODE'
+  #----------------------------------
+  
+  #---------------------------------- list of donors
+  sp <- str_split_fixed(Donors, "_", 2)
+  
+  D1 <- sp[1, 1]
+  D2 <- sp[1, 2]
+  
+  #----------------------------------
+  
+  #---------------------------------- gene expression profile of assigned cells by genetic demultiplexing per pair of donors
+  S1 <- vireo[which(vireo$donor_id == D1), ]
+  S2 <- vireo[which(vireo$donor_id == D2), ]
+  
+  read_count_S1S2 <-
+    estimate[, which(colnames(estimate) %in% c(S1$BARCODE, S2$BARCODE))]
+  read_count_S1S2 <-
+    read_count_S1S2[rowSums(read_count_S1S2[]) > as.numeric(summary(rowSums(read_count_S1S2[]))[4]), ] # > Median [3], mean [4]
+  #----------------------------------
+  
+  #---------------------------------- run SAVER (Single-cell Analysis Via Expression Recovery)
+  set.seed(123)
+  estimate_S1S2 <-
+    saver(read_count_S1S2,
+          ncores = 6,
+          estimates.only = TRUE)
+  estimate_S1S2 <-
+    data.frame(GeneID = row.names(estimate_S1S2), estimate_S1S2)
+  #----------------------------------
+  
+  #---------------------------------- save the transformed gene expression profile
+  fwrite(
+    estimate_S1S2,
+    paste0(OutPutPath, '/', D1, '_', D2, '_', FC, '_', 'AssignedCells.txt'),
+    row.names = FALSE,
+    quote = FALSE,
+    sep = '\t'
+  )
+  #----------------------------------
+  
+  #---------------------------------- gene expression profile of all cells per pair of donors
+  vireo_subset <-
+    vireo[which(vireo$donor_id %in% c('doublet', 'unassigned')), ]
+  S3 <-
+    vireo_subset[which(vireo_subset$best_singlet %in% c(D1, D2)), ] # sometime best_singlet does not exist in best_doublet
+  read_count_S3 <-
+    estimate[, which(colnames(estimate) %in% S3$BARCODE)]
+  
+  read_count_S3 <-
+    read_count_S3[which(row.names(read_count_S3) %in% row.names(read_count_S1S2)), ]
+  # identical(row.names(read_count_S3), row.names(read_count_S1S2))
+  
+  read_count_S1S2S3 <- cbind(read_count_S1S2, read_count_S3)
+  #----------------------------------
+  
+  #---------------------------------- run SAVER (Single-cell Analysis Via Expression Recovery)
+  estimate_S1S2S3 <-
+    saver(read_count_S1S2S3,
+          ncores = 6,
+          estimates.only = TRUE)
+  estimate_S1S2S3 <-
+    data.frame(GeneID = row.names(estimate_S1S2S3), estimate_S1S2S3)
+  
+  #---------------------------------- save the transformed gene expression profile
+  fwrite(
+    estimate_S1S2S3,
+    paste0(OutPutPath, '/', D1, '_', D2, '_', FC, '_', 'AllCells.txt'),
+    row.names = FALSE,
+    quote = FALSE,
+    sep = '\t'
+  )
+  #----------------------------------
+  
+  cat(
+    paste0(
+      "\033[0;",
+      47,
+      "m",
+      "You can find the results in: ",
+      "\033[0m",
+      "\n",
+      csQCEAdir,
+      "/SAVER/"
+    )
+  )
+  
 }
-
