@@ -141,7 +141,7 @@ IDCAvis <- function(InputDir)
     theme_set(theme_bw())
     g <-
       ggplot(input.plot, aes(Gene1, Gene2)) + labs(
-        subtitle = "Sample-specific correlation for expresseion values",
+        subtitle = "Sample-specific correlation for expression values",
         title = "",
         x = Gene1,
         y = Gene2
