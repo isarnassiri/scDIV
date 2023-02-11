@@ -221,7 +221,8 @@ EADDonorPool <- function(InputDir)
         'FC',
         'NumDonorPairs',
         'NumAssignedtoDonor',
-        'EA_Assignment'
+        'EA_Assignment',
+        'Mixed_Assignment'
       )
     )]
     
