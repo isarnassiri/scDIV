@@ -157,63 +157,32 @@ EADDonorPool <- function(InputDir)
     )]
     
     #---------------------------------- print outputs for all donors
+
     print('----------')
-    print(paste0('All Cells in ', FC, ': ', dim(RESULT)[1]))
-    print('----- Demultiplexing Summary -----')
-    RESULT_subset = RESULT[which(RESULT$predicted_clusters == RESULT$best_singlet), ]
-    print(paste0('% of assigned cell: ', round(
-      dim(RESULT_subset)[1] / dim(RESULT)[1], digits = 3
-    ) * 100))
-    print(paste0('% of unassigned cell: ', round(1 - (
-      dim(RESULT_subset)[1] / dim(RESULT)[1]
-    ), digits = 3) * 100))
-    print(c(dim(RESULT_subset)[1], dim(RESULT)[1]))
+ 
+    Type1 = filter(RESULT, EA_Assignment == 'unAssigned' & predicted_clusters == best_singlet) %>% as.data.frame()
+    Type2 = filter(RESULT, donor_id == c('doublet', 'unassigned') & predicted_clusters == best_singlet) %>% as.data.frame()
     
-    cat(
-      paste0('All Cells in ', FC, ':', dim(RESULT)[1]),
-      file = paste0(path, FC, '_Summary.txt'),
-      append = TRUE
-    )
-    cat("\n",
-        file = paste0(path, FC, '_Summary.txt'),
-        append = TRUE)
-    cat(
-      '----- Mixed -----',
-      file = paste0(path, FC, '_Summary.txt'),
-      append = TRUE
-    )
-    cat("\n",
-        file = paste0(path, FC, '_Summary.txt'),
-        append = TRUE)
-    cat(
-      paste0('% of assigned cell: ', round(
-        dim(RESULT_subset)[1] / dim(RESULT)[1], digits = 3
-      ) * 100),
-      file = paste0(path, FC, '_Summary.txt'),
-      append = TRUE
-    )
-    cat("\n",
-        file = paste0(path, FC, '_Summary.txt'),
-        append = TRUE)
-    cat(
-      paste0('% of unassigned cell: ', round(1 - (
-        dim(RESULT_subset)[1] / dim(RESULT)[1]
-      ), digits = 3) * 100),
-      file = paste0(path, FC, '_Summary.txt'),
-      append = TRUE
-    )
-    cat("\n",
-        file = paste0(path, FC, '_Summary.txt'),
-        append = TRUE)
-    cat('----------',
-        file = paste0(path, FC, '_Summary.txt'),
-        append = TRUE)
-    cat("\n",
-        file = paste0(path, FC, '_Summary.txt'),
-        append = TRUE)
-    cat("\n",
-        file = paste0(path, FC, '_Summary.txt'),
-        append = TRUE)
+    RESULT$Mixed_Assignment = RESULT$EA_Assignment
+    RESULT$Mixed_Assignment[which(RESULT$BARCODE %in% Type1$BARCODE)] = 'Assigned'
+    RESULT$Mixed_Assignment[which(RESULT$BARCODE %in% Type2$BARCODE)] = 'Assigned'
+    
+    print(paste0('% of assigned cell ', round( as.numeric(table(RESULT$Mixed_Assignment)[1])/dim(RESULT)[1], digits = 4 )*100 ))
+    print(paste0('% of unassigned cell ', round( as.numeric(table(RESULT$Mixed_Assignment)[2])/dim(RESULT)[1], digits = 4 )*100 ))
+    
+    cat(paste0('All Cells in ', FC, ':', dim(RESULT)[1]),file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    
+    cat('----------',file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat(paste0('% of assigned cell ', round( as.numeric(table(RESULT$Mixed_Assignment)[1])/dim(RESULT)[1], digits = 4 )*100 ),file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat(paste0('% of unassigned cell ', round( as.numeric(table(RESULT$Mixed_Assignment)[2])/dim(RESULT)[1], digits = 4 )*100 ),file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat('----------',file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
+  
     #----------------------------------
     
     #---------------------------------- save outputs for all donors
