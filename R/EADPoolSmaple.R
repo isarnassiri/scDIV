@@ -21,12 +21,12 @@
 #'@export
 
 #----------------------------------
-# library(data.table)
-# library(stringr)
-# library(tidyverse)
-# library(dplyr)
-# InputDir=paste0('/Users/isar/Documents/Expression_aware_demultiplexing/Inputs/')
-# EADDonorPool(InputDir)
+library(data.table)
+library(stringr)
+library(tidyverse)
+library(dplyr)
+InputDir=paste0('/Users/isar/Downloads/Inputs/')
+EADDonorPool(InputDir)
 #----------------------------------
 
 EADDonorPool <- NULL
@@ -96,7 +96,6 @@ EADDonorPool <- function(InputDir)
     
     iter = 1
     
-    
     for (n in Donors)
     {
       #---------------------------------- cells assigned to the donor n
@@ -145,6 +144,76 @@ EADDonorPool <- function(InputDir)
       #----------------------------------
     }
     
+    #---------------------------------- print outputs for all donors
+
+    print('----------')
+    
+    Type1 = filter(RESULT,
+                   EA_Assignment == 'unAssigned' &
+                     predicted_clusters == best_singlet) %>% as.data.frame()
+    Type2 = filter(RESULT,
+                   donor_id %in% c('doublet', 'unassigned') &
+                     predicted_clusters == best_singlet) %>% as.data.frame()
+    
+    RESULT$Mixed_Assignment = RESULT$EA_Assignment
+    RESULT$Mixed_Assignment[which(RESULT$BARCODE %in% Type1$BARCODE)] = 'Assigned'
+    RESULT$Mixed_Assignment[which(RESULT$BARCODE %in% Type2$BARCODE)] = 'Assigned'
+    
+    print(paste0('All Cells in ', FC, ': ', dim(RESULT)[1]))
+    print(paste0('% of assigned cell ', round(
+      as.numeric(table(RESULT$Mixed_Assignment)[1]) / dim(RESULT)[1], digits = 4
+    ) * 100))
+    print(paste0('% of unassigned cell ', round(
+      as.numeric(table(RESULT$Mixed_Assignment)[2]) / dim(RESULT)[1], digits = 4
+    ) * 100))
+    
+    cat(
+      paste0('All Cells in ', FC, ':', dim(RESULT)[1]),
+      file = paste0(path, FC, '_Summary.txt'),
+      append = TRUE
+    )
+    cat("\n",
+        file = paste0(path, FC, '_Summary.txt'),
+        append = TRUE)
+    
+    cat('----------',
+        file = paste0(path, FC, '_Summary.txt'),
+        append = TRUE)
+    cat("\n",
+        file = paste0(path, FC, '_Summary.txt'),
+        append = TRUE)
+    cat(
+      paste0('% of assigned cell ', round(
+        as.numeric(table(RESULT$Mixed_Assignment)[1]) / dim(RESULT)[1], digits = 4
+      ) * 100),
+      file = paste0(path, FC, '_Summary.txt'),
+      append = TRUE
+    )
+    cat("\n",
+        file = paste0(path, FC, '_Summary.txt'),
+        append = TRUE)
+    cat(
+      paste0('% of unassigned cell ', round(
+        as.numeric(table(RESULT$Mixed_Assignment)[2]) / dim(RESULT)[1], digits = 4
+      ) * 100),
+      file = paste0(path, FC, '_Summary.txt'),
+      append = TRUE
+    )
+    cat("\n",
+        file = paste0(path, FC, '_Summary.txt'),
+        append = TRUE)
+    cat('----------',
+        file = paste0(path, FC, '_Summary.txt'),
+        append = TRUE)
+    cat("\n",
+        file = paste0(path, FC, '_Summary.txt'),
+        append = TRUE)
+    cat("\n",
+        file = paste0(path, FC, '_Summary.txt'),
+        append = TRUE)
+  
+    #----------------------------------
+    
     RESULT = RESULT[, which(
       colnames(RESULT) %in% c(
         'BARCODE',
@@ -155,35 +224,6 @@ EADDonorPool <- function(InputDir)
         'EA_Assignment'
       )
     )]
-    
-    #---------------------------------- print outputs for all donors
-
-    print('----------')
- 
-    Type1 = filter(RESULT, EA_Assignment == 'unAssigned' & predicted_clusters == best_singlet) %>% as.data.frame()
-    Type2 = filter(RESULT, donor_id == c('doublet', 'unassigned') & predicted_clusters == best_singlet) %>% as.data.frame()
-    
-    RESULT$Mixed_Assignment = RESULT$EA_Assignment
-    RESULT$Mixed_Assignment[which(RESULT$BARCODE %in% Type1$BARCODE)] = 'Assigned'
-    RESULT$Mixed_Assignment[which(RESULT$BARCODE %in% Type2$BARCODE)] = 'Assigned'
-    
-    print(paste0('% of assigned cell ', round( as.numeric(table(RESULT$Mixed_Assignment)[1])/dim(RESULT)[1], digits = 4 )*100 ))
-    print(paste0('% of unassigned cell ', round( as.numeric(table(RESULT$Mixed_Assignment)[2])/dim(RESULT)[1], digits = 4 )*100 ))
-    
-    cat(paste0('All Cells in ', FC, ':', dim(RESULT)[1]),file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    
-    cat('----------',file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat(paste0('% of assigned cell ', round( as.numeric(table(RESULT$Mixed_Assignment)[1])/dim(RESULT)[1], digits = 4 )*100 ),file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat(paste0('% of unassigned cell ', round( as.numeric(table(RESULT$Mixed_Assignment)[2])/dim(RESULT)[1], digits = 4 )*100 ),file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat('----------',file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-    cat("\n",file=paste0(path, FC, '_Summary.txt'),append=TRUE)
-  
-    #----------------------------------
     
     #---------------------------------- save outputs for all donors
     fwrite(
