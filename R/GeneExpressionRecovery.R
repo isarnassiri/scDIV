@@ -4,32 +4,32 @@
 
 #'@import SAVER
 #'@import stringr
-#'@importFrom data.table
+#'@import data.table
 #'@export
 #'@name GeneExpressionRecovery
 #'@title Gene Expression Recovery
 #'@description This function uses SAVER (single-cell analysis via expression recovery), an expression recovery method for unique molecule index (UMI)-based scRNA-seq data to provide accurate expression estimates for all genes in a scRNA-seq profile.
 #'@author {Isar Nassiri}
 #'@param InputDir
-#'#'A folder including gene-cell count matrix (read_count.csv), filtered feature-barcode matrices from 10X CellRanger count (barcodes.tsv.gz), list of QC passed barcodes (Cells_passed_QC_noDoublet.txt) in QC/ folder, and output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv).
+#'A folder including gene-cell count matrix (read_count.csv), filtered feature-barcode matrices from 10X CellRanger count (barcodes.tsv.gz), list of QC passed barcodes (Cells_passed_QC_noDoublet.txt) in QC/ folder, and output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv).
 #'@param Donors
 #' A pair of selected donors (e.g., donor6_donor2)
 #'@param FC
-#' A name for flow cell (e.g., FAI5649A17).
-#'#'@return You can find the results in the SAVER/ folder with 'AssignedCells.txt' and 'AllCells.txt' extensions.
+#'A name for flow cell (e.g., FAI5649A17).
+#'@return You can find the results in the SAVER/ folder with 'AssignedCells.txt' and 'AllCells.txt' extensions.
 #'@examples
-# library("scDIV")
-# csQCEAdir <- system.file("extdata", package = "scDIV")
-# Donors<-'donor6_donor2'
-# FC<-'FAI5649A17'
-# GeneExpressionRecovery( InputDir = csQCEAdir, Donors = Donors, FC = FC )
+#'library("scDIV")
+#'csQCEAdir <- system.file("extdata", package = "scDIV")
+#'Donors<-'donor6_donor2'
+#'FC<-'FAI5649A17'
+#'GeneExpressionRecovery( InputDir = csQCEAdir, Donors = Donors, FC = FC )
 #'@export
 
 #----------------------------------
 # library(data.table)
 # library(SAVER)
 # library(stringr)
-# csQCEAdir <- '/Users/isar/Documents/Expression_aware_demultiplexing/Inputs'
+# csQCEAdir <- '/Users/isarnassiri/Documents/OGC/DCOX_scRNAseq_saver/Package_scripts_inputs/Rpackage/Inputs/'
 # Donors='donor6_donor2'
 # FC='FAI5649A17'
 # GeneExpressionRecovery( InputDir = csQCEAdir, Donors = Donors, FC = FC )

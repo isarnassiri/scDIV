@@ -29,7 +29,7 @@ ERP = "donor6_donor2_FAI5649A17_AssignedCells.txt"
 Donors='donor6_donor2'
 FC='FAI5649A17'
 InputDir = system.file("extdata", package = "scDIV")
-IDCA( InputDir, Donors, FC, ERP, TEST = T )
+IDCA( InputDir, Donors, FC, ERP, TEST = TRUE )
 }
 \author{
 {Isar Nassiri}

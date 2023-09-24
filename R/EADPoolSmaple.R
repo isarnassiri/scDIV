@@ -12,7 +12,7 @@
 #'@description .
 #'@author {Isar Nassiri}
 #'@param InputDir
-#'#'A folder including matrix of cell-gene expression after Gene Expression Recovery in the SAVER/ folder with 'AllCells.txt' extensions, output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv), and output of IDCAvis function with extension of "merged.txt" in "IDCA_Analysis/IDCA_Plots/" folder.
+#'A folder including matrix of cell-gene expression after Gene Expression Recovery in the SAVER/ folder with 'AllCells.txt' extensions, output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv), and output of IDCAvis function with extension of "merged.txt" in "IDCA_Analysis/IDCA_Plots/" folder.
 #'@return You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt".
 #'@examples
 #'library("scDIV")
@@ -25,7 +25,7 @@
 # library(stringr)
 # library(tidyverse)
 # library(dplyr)
-# InputDir=paste0('/Users/isar/Documents/Expression_aware_demultiplexing/Inputs/')
+# InputDir=paste0('/Users/isarnassiri/Documents/OGC/DCOX_scRNAseq_saver/Package_scripts_inputs/Rpackage/Inputs/')
 # EADDonorPool(InputDir)
 #----------------------------------
 

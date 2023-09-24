@@ -7,7 +7,7 @@
 IDCAvis(InputDir)
 }
 \arguments{
-\item{InputDir}{#'A folder including matrix of cell-gene expression after Gene Expression Recovery in the SAVER/ folder with 'AssignedCells.txt' extension, output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv), and output of IDCA function with extension of "_IDCA.txt" in IDCA_Analysis/ folder.}
+\item{InputDir}{A folder including matrix of cell-gene expression after Gene Expression Recovery in the SAVER/ folder with 'AssignedCells.txt' extension, output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv), and output of IDCA function with extension of "_IDCA.txt" in IDCA_Analysis/ folder.}
 }
 \value{
 You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s).

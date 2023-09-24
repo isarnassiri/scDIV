@@ -11,7 +11,7 @@
 #'@description The function visualizes the outputs of IDC analysis.
 #'@author {Isar Nassiri}
 #'@param InputDir
-#'#'A folder including matrix of cell-gene expression after Gene Expression Recovery in the SAVER/ folder with 'AssignedCells.txt' extension, output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv), and output of IDCA function with extension of "_IDCA.txt" in IDCA_Analysis/ folder.
+#'A folder including matrix of cell-gene expression after Gene Expression Recovery in the SAVER/ folder with 'AssignedCells.txt' extension, output of genetic demultiplexing of the sample pool using vireo (donor_ids.tsv), and output of IDCA function with extension of "_IDCA.txt" in IDCA_Analysis/ folder.
 #'@return You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s).
 #'@examples
 #'library("scDIV")
@@ -23,7 +23,7 @@
 # library(data.table)
 # library(stringr)
 # library(ggplot2)
-# InputDir='/Users/isar/Documents/Expression_aware_demultiplexing/Inputs/'
+# InputDir='/Users/isarnassiri/Documents/OGC/DCOX_scRNAseq_saver/Package_scripts_inputs/Rpackage/Inputs/'
 # IDCAvis( InputDir )
 #----------------------------------
 
@@ -84,7 +84,7 @@ IDCAvis <- function(InputDir)
     #---------------------------------- read in the results of genetic demultiplexing (vireo)
     vireo <-
       fread(
-        paste0(InputDir, 'donor_ids.tsv'),
+        paste0(InputDir, '/donor_ids.tsv'),
         stringsAsFactors = FALSE,
         header = TRUE
       )
@@ -160,7 +160,7 @@ IDCAvis <- function(InputDir)
     #---------------------------------- save the image
     pdf(
       file = paste0(
-        paste0(InputDir, 'IDCA_Analysis/IDCA_Plots/'),
+        paste0(InputDir, '/IDCA_Analysis/IDCA_Plots/'),
         Gene1,
         '_',
         Gene2,
