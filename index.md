@@ -92,7 +92,14 @@ InputDir = system.file("extdata", package = "scDIV")
 IDCA( InputDir, Donors, FC, ERP, TEST = T )
 ```
 
-The following script can be utilized to find all donor combinations and execute the function accordingly.
+You can find the results in the IDCA_Analysis/ folder with "IDCA.txt" extention. Figure 5 represents an example output of `IDCA()`.
+
+| ![Figure 5](/IDCA.png) | 
+|:--:| 
+| *Figure 5. Top differentially correlated gene pairs as well as their differential correlation statistics and correlation category (e.g., +/+). AIC and TPrate stands for "Akaike information criterion" and "true positive rate" which are indicators of gaussian mixture model clustering performance to replicate the cluster of cells per donor assigned by genetics demultiplexing.* |
+
+#### Notes
+1. The following script can be utilized to find all donor combinations and execute the function accordingly.
 
 ```{r,eval=FALSE}
 List_Donors <- c('Donor1', 'Donor2', 'Donor3')
@@ -104,11 +111,11 @@ for(Donor_Pair in apply( combn(List_Donors, 2), 2 , paste , collapse = "-" ))
 }
 ```
 
-You can find the results in the IDCA_Analysis/ folder with "IDCA.txt" extention. Figure 5 represents an example output of `IDCA()`.
+2. To run the `IDCAvis()` function without genotype demultiplexing, you need to create donor_ids.tsv file in the running directory of the package incluidng barcodes, donor name, and best guess for unassigned cells as follows (Figure 6): 
 
-| ![Figure 5](/IDCA.png) | 
+| ![Figure 6](/Without_GD.png) | 
 |:--:| 
-| *Figure 5. Top differentially correlated gene pairs as well as their differential correlation statistics and correlation category (e.g., +/+). AIC and TPrate stands for "Akaike information criterion" and "true positive rate" which are indicators of gaussian mixture model clustering performance to replicate the cluster of cells per donor assigned by genetics demultiplexing.* |
+| *Figure 6. Example of output for running the function without genotype demultiplexing.* |
 
 ### Step 6: Visualization of IDCA outputs
 The `IDCAvis()` function visualizes the outputs of IDC analysis.
@@ -119,11 +126,11 @@ InputDir = system.file("extdata", package = "scDIV")
 IDCAvis( InputDir )
 ```
 
-You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s) (Figure 6).
+You can find the results in the IDCA_Analysis/IDCA_Plots/ as pdf file(s) (Figure 7).
 
-| ![Figure 6](/IDCAvis.png) | 
+| ![Figure 7](/IDCAvis.png) | 
 |:--:| 
-| *Figure 6. Example of output from `IDCAvis()` function.* |
+| *Figure 7. Example of output from `IDCAvis()` function.* |
 
 ### Step 7: Expression Aware Demultiplexing per Donor Pair
 The `EADDonorPair()` function uses inter-individual differential co-expression patterns for demultiplexing per donor pair.
@@ -134,11 +141,11 @@ InputDir = system.file("extdata", package = "scDIV")
 EADDonorPair( InputDir )
 ```
 
-You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt" (Figure 7).
+You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Expression_Aware_Cell_Assignment.txt" (Figure 8).
 
-| ![Figure 7](/EADDonorPair.png) | 
+| ![Figure 8](/EADDonorPair.png) | 
 |:--:| 
-| *Figure 7. Example of output from `EADDonorPair()` function. For an indicated pair of the donors (columns Donor1 and Donor2), `EADDonorPair()` uses a top differentially correlated gene pair (e.g., XIST and RPS27) and gaussian mixture model clustering to assign each cell (BARCODE column) to a donor (predicted_clusters column). In addition, we append the results of genetic demultiplexing (donor_id, prob_max, prob_doublet, n_vars, best_singlet, best_doublet) and flow cell ID (FC).* |
+| *Figure 8. Example of output from `EADDonorPair()` function. For an indicated pair of the donors (columns Donor1 and Donor2), `EADDonorPair()` uses a top differentially correlated gene pair (e.g., XIST and RPS27) and gaussian mixture model clustering to assign each cell (BARCODE column) to a donor (predicted_clusters column). In addition, we append the results of genetic demultiplexing (donor_id, prob_max, prob_doublet, n_vars, best_singlet, best_doublet) and flow cell ID (FC).* |
 
 ### Step 8: Expression Aware Demultiplexing per sample pool
 The `EADPoolSmaple()` function uses inter-individual differential co-expression patterns for demultiplexing the pooled samples:
@@ -151,11 +158,11 @@ EADPoolSmaple( InputDir )
 
 You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Results_Expression_Aware_Cell_Assignment.txt" and "Summary.txt".
 
-For instance as you can see in figure 8, for an indicated cell (BARCODE column) (e.g., AAACCTGGTTTGACTG-1), we consider all possibilities, and most of the time the cell is assigned to the donor 7 (predicted_clusters column). We confirm that the cell belongs to donor-7 (EA_Assignment column) if we successfully assign it to donor-7 (NumAssignedtoDonor column) for an equal or greater number of all pairs of donors (NumDonorPairs column) minus 1.
+For instance as you can see in figure 9, for an indicated cell (BARCODE column) (e.g., AAACCTGGTTTGACTG-1), we consider all possibilities, and most of the time the cell is assigned to the donor 7 (predicted_clusters column). We confirm that the cell belongs to donor-7 (EA_Assignment column) if we successfully assign it to donor-7 (NumAssignedtoDonor column) for an equal or greater number of all pairs of donors (NumDonorPairs column) minus 1.
 
-| ![Figure 8](/EADPoolSmaple.png) | 
+| ![Figure 9](/EADPoolSmaple.png) | 
 |:--:| 
-| *Figure 8. Example of output from `EADPoolSmaple()` function. Please see text for more details.* |
+| *Figure 9. Example of output from `EADPoolSmaple()` function. Please see text for more details.* |
 
 ### Citation
 Isar Nassiri, Benjamin Fairfax, Andrew J Kwok, Aneesha Bhandari, Katherine Bull, Angela Lee, Yanxia Wu, Julian Knight, David Buck, Paolo Piazza. Demultiplexing of Single Cell RNA Sequencing Data using Interindividual Variation in Gene Expression. 
