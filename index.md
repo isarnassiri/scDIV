@@ -113,6 +113,10 @@ for(Donor_Pair in apply( combn(List_Donors, 2), 2 , paste , collapse = "-" ))
 
 2. To run the `IDCAvis()` function without genotype demultiplexing, you need to create donor_ids.tsv file in the running directory of the package incluidng barcodes, donor name, and best guess for unassigned cells as follows (Figure 6): 
 
+```{r, echo=FALSE, out.width="20%", fig.cap="Figure 6. Example of output for running the function without genotype demultiplexing."}
+knitr::include_graphics("Without_GD.png")
+```
+
 | ![Figure 6](/Without_GD.png){width=50%} | 
 |:--:| 
 | *Figure 6. Example of output for running the function without genotype demultiplexing.* |
