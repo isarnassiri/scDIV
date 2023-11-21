@@ -74,18 +74,6 @@ FC='FAI5649A17'
 GeneExpressionRecovery( InputDir = csQCEAdir, Donors = Donors, FC = FC )
 ```
 
-The following script can be utilized to find all donor combinations and execute the function accordingly.
-
-```{r,eval=FALSE}
-List_Donors <- c('Donor1', 'Donor2', 'Donor3')
-
-for(Donor_Pair in apply( combn(List_Donors, 2), 2 , paste , collapse = "-" ))
-{
-  print(Donor_Pair)
-  IDCA( InputDir, Donor_Pair, FC, ERP, TEST = T )
-}
-```
-
 You can find the results in the SAVER/ folder with 'AssignedCells.txt' and 'AllCells.txt' extensions. You can see an example of transformed gene-cell count matrix in figure 4.
 
 | ![Figure 4](/SAVER.png) | 
@@ -102,6 +90,18 @@ Donors='donor6_donor2'
 FC='FAI5649A17'
 InputDir = system.file("extdata", package = "scDIV")
 IDCA( InputDir, Donors, FC, ERP, TEST = T )
+```
+
+The following script can be utilized to find all donor combinations and execute the function accordingly.
+
+```{r,eval=FALSE}
+List_Donors <- c('Donor1', 'Donor2', 'Donor3')
+
+for(Donor_Pair in apply( combn(List_Donors, 2), 2 , paste , collapse = "-" ))
+{
+  print(Donor_Pair)
+  IDCA( InputDir, Donor_Pair, FC, ERP, TEST = T )
+}
 ```
 
 You can find the results in the IDCA_Analysis/ folder with "IDCA.txt" extention. Figure 5 represents an example output of `IDCA()`.
