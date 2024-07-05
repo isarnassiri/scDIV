@@ -112,4 +112,4 @@ EADDonorPair( InputDir )
 You can find the results in the IDCA_Analysis/Expression_Aware_Cell_Assignment/ folder called "Results_Expression_Aware_Cell_Assignment.txt" and "Summary.txt".
 
 ### Citation
-Isar Nassiri, Benjamin Fairfax, Andrew J Kwok, Aneesha Bhandari, Katherine Bull, Angela Lee, Yanxia Wu, Julian Knight, David Buck, Paolo Piazza. Demultiplexing of Single Cell RNA Sequencing Data using Interindividual Variation in Gene Expression. 
+Nassiri I, Andrew J Kwok, Aneesha Bhandari, Katherine R Bull, Lucy C Garner, Paul Klenerman, Caleb Webber, Laura Parkkinen, Angela W Lee, Yanxia Wu, Benjamin Fairfax, Julian C Knight, David Buck, Paolo Piazza. Demultiplexing of Single Cell RNA Sequencing Data using Interindividual Variation in Gene Expression. Bioinformatics Advances - Oxford Academic. 2024;4(1). 
