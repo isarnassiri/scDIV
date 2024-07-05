@@ -165,7 +165,7 @@ For instance as you can see in figure 9, for an indicated cell (BARCODE column) 
 | *Figure 9. Example of output from `EADPoolSmaple()` function. Please see text for more details.* |
 
 ### Citation
-Isar Nassiri, Benjamin Fairfax, Andrew J Kwok, Aneesha Bhandari, Katherine Bull, Angela Lee, Yanxia Wu, Julian Knight, David Buck, Paolo Piazza. Demultiplexing of Single Cell RNA Sequencing Data using Interindividual Variation in Gene Expression. 
+Nassiri I, Andrew J Kwok, Aneesha Bhandari, Katherine R Bull, Lucy C Garner, Paul Klenerman, Caleb Webber, Laura Parkkinen, Angela W Lee, Yanxia Wu, Benjamin Fairfax, Julian C Knight, David Buck, Paolo Piazza. Demultiplexing of Single Cell RNA Sequencing Data using Interindividual Variation in Gene Expression. Bioinformatics Advances - Oxford Academic. 2024;4(1).
 
 ### History
 **Release v0.1.1 (25/01/2023)**
